@@ -9,13 +9,14 @@ import UploadButtons from "./components/Upload";
 
 function App() {
   const [current, setCurrent] = React.useState(0);
+  const [files, setFiles] = React.useState("");
+
   let [word, setWord] = React.useState(data[current]);
 
   const next = () =>
-    current < data.length - 1 ? setCurrent(current + 1) : null;
-  const previous = () => (current > 0 ? setCurrent(current - 1) : null);
-
-  const [files, setFiles] = React.useState("");
+    current < data.length - 1 ? setCurrent(current + 1) : setCurrent(0);
+  const previous = () =>
+    current > 0 ? setCurrent(current - 1) : setCurrent(5);
 
   const handleChange = (e) => {
     const fileReader = new FileReader();
@@ -27,9 +28,6 @@ function App() {
     };
   };
   files ? (word = JSON.parse(files)[current]) : (word = data[current]);
-  // if (files) {
-  //   setWord(JSON.parse(files)[current]);
-  // }
 
   return (
     <React.Fragment>
@@ -50,8 +48,10 @@ function App() {
             id={word.id}
             word={word.word}
             grammar={word.grammar}
+            pinyin={word.pinyin}
             defination={word.defination}
             placeholder="Click to reveal the defination"
+            placeholderPinyin="Click to reveal pinyin"
           />
           <div className="buttons">
             <Button variant="contained" color="success" onClick={previous}>
