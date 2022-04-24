@@ -11,28 +11,43 @@ export default function BasicCard({
   id = 1,
   word = "示例词语",
   grammar = "noun",
+  pinyin = "shì lì",
   defination = "This is the example defination",
   placeholder,
+  placeholderPinyin = "PININ",
 }) {
   const [meaning, setMeaning] = React.useState(placeholder);
+  const [pinyindisplay, setPinyindisplay] = React.useState(placeholderPinyin);
+
   React.useEffect(() => {
     setMeaning(placeholder);
+    setPinyindisplay(placeholderPinyin);
   }, [id]);
 
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
           No. {id}/{len}
         </Typography>
-        <Typography variant="h5" component="div">
+        <Typography variant="h1" component="div">
           {word}
         </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+        <Typography sx={{ mb: 1.5 }} color="text.secondary" variant="h6">
           {grammar}
         </Typography>
         <Typography
-          variant="h6"
+          sx={{ mb: 1.5 }}
+          variant="h4"
+          color="text.secondary"
+          onClick={() => {
+            setPinyindisplay(pinyin);
+          }}
+        >
+          {pinyindisplay}
+        </Typography>
+        <Typography
+          variant="h3"
           onClick={() => {
             setMeaning(defination);
           }}
