@@ -22,7 +22,7 @@ function App() {
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], "UTF-8");
     fileReader.onload = (e) => {
-      console.log("e.target.result", e.target.result);
+      // console.log("e.target.result", e.target.result);
       setFiles(e.target.result);
       setCurrent(0);
     };
