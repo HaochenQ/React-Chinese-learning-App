@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "word": "示例1",
+        "grammar": "noun",
+        "defination": "Example1"
+    },
+    {
+        "id": 2,
+        "word": "示例2",
+        "grammar": "noun",
+        "defination": "Example2"
+    },
+    {
+        "id": 3,
+        "word": "示例3",
+        "grammar": "noun",
+        "defination": "Example3"
+    },
+    {
+        "id": 4,
+        "word": "示例4",
+        "grammar": "verb",
+        "defination": "Example4"
+    },
+    {
+        "id": 5,
+        "word": "示例5",
+        "grammar": "noun",
+        "defination": "Example5"
+    }
+]
