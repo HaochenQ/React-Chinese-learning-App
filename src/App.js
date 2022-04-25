@@ -34,7 +34,7 @@ function App() {
       {/* <CssBaseline /> */}
       {/* The rest of your application */}
       <NavBar />
-      <body>
+      <div className="body">
         <div className="word-card">
           <Button variant="contained">
             <input type="file" onChange={handleChange} />
@@ -62,7 +62,7 @@ function App() {
             </Button>
           </div>
         </div>
-      </body>
+      </div>
     </React.Fragment>
   );
 }

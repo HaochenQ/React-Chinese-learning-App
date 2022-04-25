@@ -24,51 +24,72 @@ export default function BasicCard({
     setPinyindisplay(placeholderPinyin);
   }, [id]);
 
+  const handleKeyDown = (e) => {
+    //console.log(e);
+    //alert(e.keyCode);
+    //p
+    if (e.keyCode === 80) {
+      setPinyindisplay(pinyin);
+    }
+    //d
+    if (e.keyCode === 68) {
+      setMeaning(defination);
+    }
+    //t
+    if (e.keyCode === 84) {
+      window.open(
+        `https://translate.google.com/?sl=zh-CN&tl=en&text=${word}&op=translate`
+      );
+    }
+  };
+
   return (
     <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
-          No. {id}/{len}
-        </Typography>
-        <Typography variant="h1" component="div">
-          {word}
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary" variant="h6">
-          {grammar}
-        </Typography>
-        <Typography
-          sx={{ mb: 1.5 }}
-          variant="h4"
-          color="text.secondary"
-          onClick={() => {
-            setPinyindisplay(pinyin);
-          }}
-        >
-          {pinyindisplay}
-        </Typography>
-        <Typography
-          variant="h3"
-          onClick={() => {
-            setMeaning(defination);
-          }}
-        >
-          {meaning}
-          <br />
-          {/* {'"a benevolent smile"'} */}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button
-          size="small"
-          onClick={() => {
-            window.open(
-              `https://translate.google.com/?sl=zh-CN&tl=en&text=${word}&op=translate`
-            );
-          }}
-        >
-          Learn More in Google Translate
-        </Button>
-      </CardActions>
+      <div onKeyDown={(e) => handleKeyDown(e)} tabIndex="-1">
+        <CardContent>
+          <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
+            No. {id}/{len}
+          </Typography>
+          <Typography variant="h1" component="div">
+            {word}
+          </Typography>
+          <Typography sx={{ mb: 1.5 }} color="text.secondary" variant="h6">
+            {grammar}
+          </Typography>
+          <Typography
+            sx={{ mb: 1.5 }}
+            variant="h4"
+            color="text.secondary"
+            onClick={() => {
+              setPinyindisplay(pinyin);
+            }}
+          >
+            {pinyindisplay}
+          </Typography>
+          <Typography
+            variant="h3"
+            onClick={() => {
+              setMeaning(defination);
+            }}
+          >
+            {meaning}
+            <br />
+            {/* {'"a benevolent smile"'} */}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button
+            size="small"
+            onClick={() => {
+              window.open(
+                `https://translate.google.com/?sl=zh-CN&tl=en&text=${word}&op=translate`
+              );
+            }}
+          >
+            Learn More in Google Translate
+          </Button>
+        </CardActions>
+      </div>
     </Card>
   );
 }
