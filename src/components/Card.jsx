@@ -18,10 +18,12 @@ export default function BasicCard({
 }) {
   const [meaning, setMeaning] = React.useState(placeholder);
   const [pinyindisplay, setPinyindisplay] = React.useState(placeholderPinyin);
+  const wholeCard = React.useRef(null);
 
   React.useEffect(() => {
     setMeaning(placeholder);
     setPinyindisplay(placeholderPinyin);
+    wholeCard.current.focus();
   }, [id]);
 
   const handleKeyDown = (e) => {
@@ -45,7 +47,7 @@ export default function BasicCard({
 
   return (
     <Card sx={{ minWidth: 275 }}>
-      <div onKeyDown={(e) => handleKeyDown(e)} tabIndex="-1">
+      <div onKeyDown={(e) => handleKeyDown(e)} tabIndex="-1" ref={wholeCard}>
         <CardContent>
           <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
             No. {id}/{len}
