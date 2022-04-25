@@ -13,40 +13,14 @@ function App() {
   const [files, setFiles] = React.useState("");
   const [shuffle, setShuffle] = React.useState(false);
   //const [len, setLen] = React.useState(data.length);
-  //React.useEffect()
 
   //let [word, setWord] = React.useState(data[current]);
   let word;
   let len = data.length;
-  //
-  const [pre, setPre] = React.useState([]);
-  //get a random number but self
-
-  const getRandom = (max) => {
-    let number = Math.floor(Math.random() * max);
-    return number === current ? getRandom(max) : number;
-  };
-  // const next = () =>
-  //   current < len - 1 ? setCurrent(current + 1) : setCurrent(0);
-  const next = () => {
-    if (shuffle) {
-      let random = getRandom(len);
-      console.log(random);
-      pre.length === len ? setPre[[current]] : setPre(pre.push(current));
-      //console.log("pre: " + pre);
-      setCurrent(random);
-    } else {
-      return current < len - 1 ? setCurrent(current + 1) : setCurrent(0);
-    }
-  };
-
-  const previous = () => {
-    if (shuffle) {
-      pre ? setCurrent(pre.pop) : setCurrent(current - 1);
-    } else {
-      current > 0 ? setCurrent(current - 1) : setCurrent(len - 1);
-    }
-  };
+  const next = () =>
+    current < len - 1 ? setCurrent(current + 1) : setCurrent(0);
+  const previous = () =>
+    current > 0 ? setCurrent(current - 1) : setCurrent(4);
 
   const handleChange = (e) => {
     const fileReader = new FileReader();
@@ -60,8 +34,8 @@ function App() {
   };
 
   const handleSwitchChange = (e) => {
-    //console.log(e.target.checked);
-    setShuffle(e.target.checked);
+    console.log(e.target.checked);
+    setShuffle(e.target.shuffle);
   };
   //console.log(JSON.parse(files)[current]);
   files ? (word = JSON.parse(files)[current]) : (word = data[current]);
