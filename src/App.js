@@ -16,7 +16,7 @@ function App() {
   const next = () =>
     current < data.length - 1 ? setCurrent(current + 1) : setCurrent(0);
   const previous = () =>
-    current > 0 ? setCurrent(current - 1) : setCurrent(5);
+    current > 0 ? setCurrent(current - 1) : setCurrent(4);
 
   const handleChange = (e) => {
     const fileReader = new FileReader();
@@ -50,7 +50,7 @@ function App() {
             grammar={word.grammar}
             pinyin={word.pinyin}
             defination={word.defination}
-            placeholder="Click to reveal the defination"
+            placeholder="Click to reveal the definition"
             placeholderPinyin="Click to reveal pinyin"
           />
           <div className="buttons">
