@@ -34,7 +34,7 @@ function App() {
   };
 
   const handleSwitchChange = (e) => {
-    console.log(e.target.checked);
+    //console.log(e.target.checked);
     setShuffle(e.target.shuffle);
   };
   //console.log(JSON.parse(files)[current]);
