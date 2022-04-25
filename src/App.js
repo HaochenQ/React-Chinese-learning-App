@@ -20,7 +20,7 @@ function App() {
   const next = () =>
     current < len - 1 ? setCurrent(current + 1) : setCurrent(0);
   const previous = () =>
-    current > 0 ? setCurrent(current - 1) : setCurrent(4);
+    current > 0 ? setCurrent(current - 1) : setCurrent(len - 1);
 
   const handleChange = (e) => {
     const fileReader = new FileReader();
