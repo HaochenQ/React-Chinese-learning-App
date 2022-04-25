@@ -18,3 +18,7 @@
   margin-top: 20px;
   justify-content: space-between;
 }
+.input-bar{
+  display: flex;
+  justify-content: space-between;
+}
