@@ -66,7 +66,7 @@ export default function BasicCard({
             );
           }}
         >
-          Learn More
+          Learn More in Google Translate
         </Button>
       </CardActions>
     </Card>
