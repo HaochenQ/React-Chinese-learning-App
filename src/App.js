@@ -7,34 +7,38 @@ import "./App.css";
 import { Button } from "@mui/material";
 import UploadButtons from "./components/Upload";
 import ContrlledSwitch from "./components/ControlledSwitch";
+import wordsShuffle from "./util/shuffle";
 
 function App() {
   const [current, setCurrent] = React.useState(0);
   const [files, setFiles] = React.useState("");
   const [shuffle, setShuffle] = React.useState(false);
+  const [preArray, setPreArray] = React.useState([]);
   //const [len, setLen] = React.useState(data.length);
   //React.useEffect()
 
   //let [word, setWord] = React.useState(data[current]);
   let word;
   let len = data.length;
-  //
-  const [pre, setPre] = React.useState([]);
-  //get a random number but self
 
+  //an array to store indexs of shuffled words
+  const [shuffledQueue, setShuffledQueue] = React.useState(
+    Array.from(Array(len).keys())
+  );
+
+  //get a random number but self
   const getRandom = (max) => {
     let number = Math.floor(Math.random() * max);
     return number === current ? getRandom(max) : number;
   };
-  // const next = () =>
-  //   current < len - 1 ? setCurrent(current + 1) : setCurrent(0);
+
   const next = () => {
     if (shuffle) {
       let random = getRandom(len);
-      console.log(random);
-      pre.length === len ? setPre[[current]] : setPre(pre.push(current));
-      //console.log("pre: " + pre);
       setCurrent(random);
+      // if (shuffledQueue) {
+      //   setCurrent()
+      // }
     } else {
       return current < len - 1 ? setCurrent(current + 1) : setCurrent(0);
     }
@@ -42,7 +46,8 @@ function App() {
 
   const previous = () => {
     if (shuffle) {
-      pre ? setCurrent(pre.pop) : setCurrent(current - 1);
+      let random = getRandom(len);
+      setCurrent(random);
     } else {
       current > 0 ? setCurrent(current - 1) : setCurrent(len - 1);
     }
@@ -62,6 +67,7 @@ function App() {
   const handleSwitchChange = (e) => {
     //console.log(e.target.checked);
     setShuffle(e.target.checked);
+    setShuffledQueue(wordsShuffle(shuffledQueue));
   };
   //console.log(JSON.parse(files)[current]);
   files ? (word = JSON.parse(files)[current]) : (word = data[current]);
