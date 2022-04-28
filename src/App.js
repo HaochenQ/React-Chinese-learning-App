@@ -1,46 +1,98 @@
 import * as React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
 import NavBar from "./components/NavBar";
 import Card from "./components/Card";
 import data from "./data/input.json";
 import "./App.css";
 import { Button } from "@mui/material";
-import UploadButtons from "./components/Upload";
 import ContrlledSwitch from "./components/ControlledSwitch";
+import wordsShuffle from "./util/shuffle";
 
 function App() {
+  let word;
+  let len;
+
   const [current, setCurrent] = React.useState(0);
   const [files, setFiles] = React.useState("");
   const [shuffle, setShuffle] = React.useState(false);
-  //const [len, setLen] = React.useState(data.length);
 
-  //let [word, setWord] = React.useState(data[current]);
-  let word;
-  let len = data.length;
-  const next = () =>
-    current < len - 1 ? setCurrent(current + 1) : setCurrent(0);
-  const previous = () =>
-    current > 0 ? setCurrent(current - 1) : setCurrent(len - 1);
+  //an array to store indexs of shuffled words
+  const [shuffledQueue, setShuffledQueue] = React.useState([]);
+  //the initial value set to 1 so the first shuffled word won't show twice
+  //as
+  const [shuffleIndex, setShuffleIndex] = React.useState(1);
+  const [checked, setChecked] = React.useState(false);
+  files ? (word = JSON.parse(files)[current]) : (word = data[current]);
+  files ? (len = JSON.parse(files).length) : (len = data.length);
+
+  React.useEffect(() => {
+    if (shuffledQueue.length === len) {
+      setCurrent(shuffledQueue[0]);
+    }
+  }, [shuffledQueue, len, files, checked]);
+
+  // show the next word
+  const next = () => {
+    if (shuffle) {
+      console.log("shuffled next");
+      console.log(shuffleIndex);
+      console.log(shuffledQueue);
+      if (shuffleIndex < len) {
+        setCurrent(shuffledQueue[shuffleIndex]);
+        setShuffleIndex(shuffleIndex + 1);
+      } else {
+        alert("No more new words!");
+        setShuffleIndex(shuffleIndex - 2);
+      }
+    } else {
+      return current < len - 1 ? setCurrent(current + 1) : setCurrent(0);
+    }
+  };
+
+  //show the previous word
+  const previous = () => {
+    if (shuffle) {
+      if (shuffleIndex >= 0) {
+        setCurrent(shuffledQueue[shuffleIndex]);
+        setShuffleIndex(shuffleIndex - 1);
+      } else {
+        alert("All words are reviewed!");
+        setShuffleIndex(shuffleIndex + 2);
+      }
+    } else {
+      current > 0 ? setCurrent(current - 1) : setCurrent(len - 1);
+    }
+  };
+
 
   const handleChange = (e) => {
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], "UTF-8");
     fileReader.onload = (e) => {
-      // console.log("e.target.result", e.target.result);
       setFiles(e.target.result);
-      setCurrent(0);
-      //setLen(JSON.parse(files).length);
+      //setShuffledQueue(wordsShuffle(Array.from(Array(len).keys())));
+      switchOff();
     };
   };
 
   const handleSwitchChange = (e) => {
-    //console.log(e.target.checked);
-    setShuffle(e.target.shuffle);
+
+    setChecked(e.target.checked);
+    console.log("switched!");
+    setShuffle(e.target.checked);
+    if (e.target.checked) {
+      setShuffledQueue(wordsShuffle(Array.from(Array(len).keys())));
+      setShuffleIndex(1);
+    } else {
+      setShuffledQueue(Array.from(Array(len).keys()));
+    }
   };
-  //console.log(JSON.parse(files)[current]);
-  files ? (word = JSON.parse(files)[current]) : (word = data[current]);
-  //files ? setWord(JSON.parse(files)[current]) : setWord(data[current]);
-  files ? (len = JSON.parse(files).length) : (len = data.length);
+  //switch off the switch
+  const switchOff = () => {
+    setChecked(false);
+    setShuffle(false);
+    setCurrent(0);
+
+  };
 
   return (
     <React.Fragment>
@@ -54,7 +106,10 @@ function App() {
             <Button variant="contained">
               <input type="file" onChange={handleChange} />
             </Button>
-            <ContrlledSwitch handleChange={handleSwitchChange} />
+            <ContrlledSwitch
+              handleChange={handleSwitchChange}
+              checked={checked}
+            />
           </div>
           {/* <br /> */}
           {/* <UploadButtons />
