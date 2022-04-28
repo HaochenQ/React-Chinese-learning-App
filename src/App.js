@@ -14,6 +14,7 @@ function App() {
   const [current, setCurrent] = React.useState(0);
   const [files, setFiles] = React.useState("");
   const [shuffle, setShuffle] = React.useState(false);
+
   //an array to store indexs of shuffled words
   const [shuffledQueue, setShuffledQueue] = React.useState([]);
   //the initial value set to 1 so the first shuffled word won't show twice
@@ -62,6 +63,7 @@ function App() {
     }
   };
 
+
   const handleChange = (e) => {
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], "UTF-8");
@@ -73,6 +75,7 @@ function App() {
   };
 
   const handleSwitchChange = (e) => {
+
     setChecked(e.target.checked);
     console.log("switched!");
     setShuffle(e.target.checked);
@@ -88,6 +91,7 @@ function App() {
     setChecked(false);
     setShuffle(false);
     setCurrent(0);
+
   };
 
   return (
