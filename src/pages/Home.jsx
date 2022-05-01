@@ -4,6 +4,7 @@ import data from "../data/input.json";
 import { Button } from "@mui/material";
 import ContrlledSwitch from "../components/ControlledSwitch";
 import wordsShuffle from "../util/shuffle";
+import { ComposedListContext } from "../util/ComposedListContext";
 
 export default function Home() {
   let word;
@@ -11,6 +12,7 @@ export default function Home() {
   //current index in original word list
   const [current, setCurrent] = React.useState(0);
   const [files, setFiles] = React.useState("");
+  //const [composedList, setComposedList] = React.useState([]);
   const [shuffle, setShuffle] = React.useState(false);
 
   //an array to store indexs of shuffled words
@@ -19,14 +21,26 @@ export default function Home() {
   //as
   const [shuffleIndex, setShuffleIndex] = React.useState(1);
   const [checked, setChecked] = React.useState(false);
-  files ? (word = JSON.parse(files)[current]) : (word = data[current]);
-  files ? (len = JSON.parse(files).length) : (len = data.length);
+  let [list, setList] = React.useContext(ComposedListContext);
+
+  if (list.length !== 0) {
+    word = list[current];
+    len = list.length;
+  } else {
+    files ? (word = JSON.parse(files)[current]) : (word = data[current]);
+    files ? (len = JSON.parse(files).length) : (len = data.length);
+  }
 
   React.useEffect(() => {
     if (shuffledQueue.length === len) {
       setCurrent(shuffledQueue[0]);
     }
   }, [shuffledQueue, len, files, checked]);
+
+  //   React.useEffect(() => {
+  //     word = composedList[current];
+  //     len = composedList.length;
+  //   }, [composedList]);
 
   // show the next word
   const next = () => {
@@ -101,6 +115,11 @@ export default function Home() {
     setShuffle(false);
     setCurrent(0);
   };
+
+  //handle composeing words
+  //   const hanleComposedWords = (list) => {
+  //     setComposedList(list);
+  //   };
 
   return (
     <div className="body">
