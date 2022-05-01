@@ -13,6 +13,33 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+.create-list{
+  /* background-color: rgb(222, 244, 251); */
+  width: 60%;
+  height: 50%;
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 5%;
+}
+.about-card{
+  /* background-color: rgb(222, 244, 251); */
+  width: 60%;
+  height: 50%;
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 5%;
+}
+
+
+
 .buttons{
   display: flex;
   margin-top: 20px;
