@@ -95,6 +95,7 @@ export default function Home() {
       setFiles(e.target.result);
       //setShuffledQueue(wordsShuffle(Array.from(Array(len).keys())));
       switchOff();
+      setList([]);
     };
   };
 
