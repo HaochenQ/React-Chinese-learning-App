@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 
-const pages = ["compose", "about"];
+const pages = ["compose a new list", "about"];
 //const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const NavBar = () => {
@@ -85,13 +85,23 @@ const NavBar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              <MenuItem key={"compose"} onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">
+                  <Link to={`/compose`}>Compose a new list</Link>
+                </Typography>
+              </MenuItem>
+              <MenuItem key={"about"} onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">
+                  <Link to={`/about`}>about</Link>
+                </Typography>
+              </MenuItem>
+              {/* {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
                     <Link to={`/${page}`}>{page}</Link>
                   </Typography>
                 </MenuItem>
-              ))}
+              ))} */}
             </Menu>
           </Box>
           <Typography
@@ -111,7 +121,35 @@ const NavBar = () => {
             </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                }}
+                to={`/compose`}
+              >
+                compose a new list
+              </Link>
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                }}
+                to={`/about`}
+              >
+                about
+              </Link>
+            </Button>
+            {/* {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -127,7 +165,7 @@ const NavBar = () => {
                   {page}
                 </Link>
               </Button>
-            ))}
+            ))} */}
           </Box>
 
           {/* <Box sx={{ flexGrow: 0 }}>

@@ -144,9 +144,9 @@ export default function Home() {
           word={word.word}
           grammar={word.grammar}
           pinyin={word.pinyin}
-          defination={word.defination}
-          placeholder="Click to reveal the definition"
-          placeholderPinyin="Click to reveal pinyin"
+          definition={word.definition}
+          placeholder="Click to reveal the translation"
+          placeholderPinyin="Click to reveal the pinyin"
         />
         <div className="buttons">
           <Button variant="contained" color="success" onClick={previous}>

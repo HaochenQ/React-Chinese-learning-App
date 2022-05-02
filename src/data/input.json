@@ -4,34 +4,34 @@
         "word": "示例1",
         "grammar": "noun",
         "pinyin": "shì lì",
-        "defination": "Example1"
+        "definition": "Example1"
     },
     {
         "id": 2,
         "word": "示例2",
         "grammar": "noun",
         "pinyin": "shì lì",
-        "defination": "Example2"
+        "definition": "Example2"
     },
     {
         "id": 3,
         "word": "示例3",
         "grammar": "noun",
         "pinyin": "shì lì",
-        "defination": "Example3"
+        "definition": "Example3"
     },
     {
         "id": 4,
         "word": "示例4",
         "grammar": "verb",
         "pinyin": "shì lì",
-        "defination": "Example4"
+        "definition": "Example4"
     },
     {
         "id": 5,
         "word": "示例5",
         "grammar": "noun",
         "pinyin": "shì lì",
-        "defination": "Example5"
+        "definition": "Example5"
     }
 ]

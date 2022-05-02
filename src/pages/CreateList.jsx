@@ -1,6 +1,14 @@
 import React, { useState, useContext } from "react";
 import TextField from "@mui/material/TextField";
-import { Typography, Stack, Grid, Button, Tooltip } from "@mui/material";
+import {
+  Typography,
+  Stack,
+  Grid,
+  Button,
+  Tooltip,
+  Alert,
+  Fab,
+} from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
@@ -73,7 +81,7 @@ export default function CreateList() {
         <Grid
           container
           direction="column"
-          justifyContent="center"
+          //justifyContent="center"
           alignItems="center"
         >
           <Grid item>
@@ -82,9 +90,10 @@ export default function CreateList() {
               gutterBottom
               //style={{ textAlign: "center", marginTop: "20px" }}
             >
-              Create Your Words List
+              Create Your New Word List
             </Typography>
           </Grid>
+
           <Grid item>
             {/* <Grid container spacing={47}>
             <Grid item>
@@ -103,6 +112,7 @@ export default function CreateList() {
             </Grid>
           </Grid> */}
           </Grid>
+
           <br />
           <Grid item>
             <Stack
@@ -118,7 +128,7 @@ export default function CreateList() {
               autoComplete="off"
             >
               <TextField
-                label="Word Name"
+                label="Word in Chinese"
                 id="name"
                 name="name"
                 value={wordName}
@@ -128,7 +138,7 @@ export default function CreateList() {
                 //size="small"
               />
               <TextField
-                label="Grammar"
+                label="Part of Speech"
                 id="grammar"
                 name="grammar"
                 value={grammar}
@@ -146,7 +156,7 @@ export default function CreateList() {
                 //variant="filled"
               />
               <TextField
-                label="Definition"
+                label="Translation"
                 id="definition"
                 name="definition"
                 value={definition}
@@ -160,7 +170,7 @@ export default function CreateList() {
                   //type="submit"
                   onClick={(e) => onAdd(e)}
                 >
-                  Next Word
+                  Save the Word into the List
                 </Button>
               </Tooltip>
             </Stack>
@@ -177,7 +187,7 @@ export default function CreateList() {
           >
             <Grid item>
               {/* download the current list */}
-              <Tooltip title="Click to download the current word list.">
+              <Tooltip title="Download the current word list">
                 <Button
                   variant="contained"
                   type="button"
@@ -186,7 +196,7 @@ export default function CreateList() {
                   )}`}
                   download="wordList.json"
                 >
-                  Download
+                  Save to List
                 </Button>
               </Tooltip>
             </Grid>
@@ -198,7 +208,21 @@ export default function CreateList() {
               </Tooltip>
             </Grid>
           </Grid>
+          <Grid item>
+            <br />
+            <Alert severity="warning" variant="outlined">
+              Please save your new list on Hard Drive if you'd like to use it
+              once again!
+            </Alert>
+          </Grid>
         </Grid>
+      </div>
+      <div className="fab">
+        {list.length ? (
+          <Fab variant="extended" color="info" size="medium">
+            {list.length} word(s) in the current list
+          </Fab>
+        ) : null}
       </div>
     </React.Fragment>
   );

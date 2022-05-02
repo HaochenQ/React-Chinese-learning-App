@@ -9,14 +9,14 @@ export default function About() {
       word: "示例1",
       grammar: "noun",
       pinyin: "shì lì",
-      defination: "Example1",
+      definition: "Example1",
     },
     {
       id: 2,
       word: "示例2",
       grammar: "noun",
       pinyin: "shì lì",
-      defination: "Example2",
+      definition: "Example2",
     },
   ];
   return (
