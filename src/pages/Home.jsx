@@ -14,13 +14,17 @@ export default function Home() {
   const [files, setFiles] = React.useState("");
   //const [composedList, setComposedList] = React.useState([]);
   const [shuffle, setShuffle] = React.useState(false);
+  const [ENmode, setENMode] = React.useState(false);
 
   //an array to store indexs of shuffled words
   const [shuffledQueue, setShuffledQueue] = React.useState([]);
+
   //the initial value set to 1 so the first shuffled word won't show twice
-  //as
   const [shuffleIndex, setShuffleIndex] = React.useState(1);
   const [checked, setChecked] = React.useState(false);
+
+  const [modeChecked, setModeChecked] = React.useState(false);
+
   let [list, setList] = React.useContext(ComposedListContext);
 
   if (list.length !== 0) {
@@ -110,6 +114,12 @@ export default function Home() {
       setShuffledQueue(Array.from(Array(len).keys()));
     }
   };
+
+  const handleModeChange = (e) => {
+    setModeChecked(e.target.checked);
+    setENMode(e.target.checked);
+  };
+
   //switch off the switch
   const switchOff = () => {
     setChecked(false);
@@ -132,6 +142,12 @@ export default function Home() {
           <ContrlledSwitch
             handleChange={handleSwitchChange}
             checked={checked}
+            label="Shuffle"
+          />
+          <ContrlledSwitch
+            handleChange={handleModeChange}
+            checked={modeChecked}
+            label="EN to CN"
           />
         </div>
         {/* <br /> */}
@@ -139,6 +155,7 @@ export default function Home() {
     <br /> */}
         <br />
         <Card
+          ENmode={ENmode}
           len={len}
           id={word.id}
           word={word.word}
@@ -147,6 +164,7 @@ export default function Home() {
           definition={word.definition}
           placeholder="Click to reveal the translation"
           placeholderPinyin="Click to reveal the pinyin"
+          placeholderChinese="Click to reveal Chinese word"
         />
         <div className="buttons">
           <Button variant="contained" color="success" onClick={previous}>
