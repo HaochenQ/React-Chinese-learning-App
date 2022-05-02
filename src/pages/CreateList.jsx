@@ -196,7 +196,7 @@ export default function CreateList() {
                   )}`}
                   download="wordList.json"
                 >
-                  Save to List
+                  Save the List
                 </Button>
               </Tooltip>
             </Grid>
