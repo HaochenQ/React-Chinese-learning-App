@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import ContrlledSwitch from "../components/ControlledSwitch";
 import wordsShuffle from "../util/shuffle";
 import { ComposedListContext } from "../util/ComposedListContext";
+import FileUploadIcon from "@mui/icons-material/FileUpload";
 
 export default function Home() {
   let word;
@@ -12,6 +13,7 @@ export default function Home() {
   //current index in original word list
   const [current, setCurrent] = React.useState(0);
   const [files, setFiles] = React.useState("");
+  const [fileName, setFileName] = React.useState(null);
   //const [composedList, setComposedList] = React.useState([]);
   const [shuffle, setShuffle] = React.useState(false);
   const [ENmode, setENMode] = React.useState(false);
@@ -93,7 +95,12 @@ export default function Home() {
   };
 
   const handleChange = (e) => {
+    console.log(e.target.files[0]);
+
+    setFileName(e.target.files[0].name);
     const fileReader = new FileReader();
+    //file name e.target.files[0].name
+    //extension e.target.files[0].type
     fileReader.readAsText(e.target.files[0], "UTF-8");
     fileReader.onload = (e) => {
       setFiles(e.target.result);
@@ -136,8 +143,16 @@ export default function Home() {
     <div className="body">
       <div className="word-card">
         <div className="input-bar">
-          <Button variant="contained">
-            <input type="file" onChange={handleChange} />
+          <Button variant="contained" component="label">
+            {fileName ? (
+              fileName
+            ) : (
+              <>
+                <FileUploadIcon />
+                &nbsp;Upload File
+              </>
+            )}
+            <input type="file" hidden onChange={handleChange} />
           </Button>
           <ContrlledSwitch
             handleChange={handleSwitchChange}
