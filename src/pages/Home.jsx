@@ -164,7 +164,7 @@ export default function Home() {
           definition={word.definition}
           placeholder="Click to reveal the translation"
           placeholderPinyin="Click to reveal the pinyin"
-          placeholderChinese="Click to reveal Chinese word"
+          placeholderChinese="点击查看"
         />
         <div className="buttons">
           <Button variant="contained" color="success" onClick={previous}>

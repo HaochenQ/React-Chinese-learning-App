@@ -68,9 +68,19 @@ export default function BasicCard({
               >
                 No. {id}/{len}
               </Typography>
-              <Typography variant="h1" component="div">
-                {definition}
-              </Typography>
+              <Tooltip title="Press [C] to reveal Chinese">
+                <Typography
+                  variant="h1"
+                  onClick={() => {
+                    setCNdisplay(word);
+                  }}
+                >
+                  {CNdisplay}
+                  <br />
+                  {/* {'"a benevolent smile"'} */}
+                </Typography>
+              </Tooltip>
+
               <Typography sx={{ mb: 1.5 }} color="text.secondary" variant="h6">
                 {grammar}
               </Typography>
@@ -86,18 +96,9 @@ export default function BasicCard({
                   {pinyindisplay}
                 </Typography>
               </Tooltip>
-              <Tooltip title="Press [C] to reveal Chinese">
-                <Typography
-                  variant="h3"
-                  onClick={() => {
-                    setCNdisplay(word);
-                  }}
-                >
-                  {CNdisplay}
-                  <br />
-                  {/* {'"a benevolent smile"'} */}
-                </Typography>
-              </Tooltip>
+              <Typography variant="h3" component="div">
+                {definition}
+              </Typography>
             </>
           ) : (
             <>
