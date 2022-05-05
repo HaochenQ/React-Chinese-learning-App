@@ -56,7 +56,9 @@ export default function BasicCard({
   };
 
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card
+    //sx={{ minWidth: 275 }}
+    >
       <div onKeyDown={(e) => handleKeyDown(e)} tabIndex="-1" ref={wholeCard}>
         <CardContent>
           {ENmode ? (

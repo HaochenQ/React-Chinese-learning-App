@@ -23,17 +23,10 @@ const NavBar = () => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  // const handleOpenUserMenu = (event) => {
-  //   setAnchorElUser(event.currentTarget);
-  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null);
-  // };
 
   return (
     <AppBar position="static">
@@ -87,21 +80,14 @@ const NavBar = () => {
             >
               <MenuItem key={"compose"} onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">
-                  <Link to={`/compose`}>Compose a new list</Link>
+                  <Link to={`/compose`}>Compose A New List</Link>
                 </Typography>
               </MenuItem>
               <MenuItem key={"about"} onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">
-                  <Link to={`/about`}>about</Link>
+                  <Link to={`/about`}>About</Link>
                 </Typography>
               </MenuItem>
-              {/* {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link to={`/${page}`}>{page}</Link>
-                  </Typography>
-                </MenuItem>
-              ))} */}
             </Menu>
           </Box>
           <Typography

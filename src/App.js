@@ -6,11 +6,13 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import CreateList from "./pages/CreateList";
 import { ComposedListProvider } from "./util/ComposedListContext";
+import { CssBaseline } from "@mui/material";
 
 function App() {
   return (
     <React.Fragment>
       <ComposedListProvider>
+        <CssBaseline />
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
