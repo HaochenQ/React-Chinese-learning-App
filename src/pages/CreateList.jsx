@@ -56,7 +56,7 @@ export default function CreateList() {
         toast.error(`Please fill in all fields before go to next word!`);
       }
     } catch (error) {
-      toast("Error happened ;(");
+      toast.error("Error happened ;(");
     }
   };
 
@@ -77,114 +77,84 @@ export default function CreateList() {
   return (
     <React.Fragment>
       <ToastContainer />
-      <div className="create-list">
-        <Grid
-          container
-          direction="column"
-          //justifyContent="center"
-          alignItems="center"
-        >
-          <Grid item>
-            <Typography
-              variant="h4"
-              gutterBottom
-              //style={{ textAlign: "center", marginTop: "20px" }}
-            >
-              Create Your New Word List
-            </Typography>
-          </Grid>
 
-          <Grid item>
-            {/* <Grid container spacing={47}>
-            <Grid item>
-              <Button
-                variant="contained"
-                color="primary"
-                //style={{ marginRight: "350px" }}
-              >
-                <ArrowBackIosIcon fontSize="medium" />
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button variant="contained" color="primary">
-                <ArrowForwardIosIcon />
-              </Button>
-            </Grid>
-          </Grid> */}
-          </Grid>
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        style={{ minHeight: "80vh" }}
+      >
+        <Grid item>
+          <Typography
+            variant="h4"
+            gutterBottom
+            //style={{ textAlign: "center", marginTop: "20px" }}
+          >
+            Create a New Word List
+          </Typography>
+        </Grid>
 
-          <br />
-          <Grid item>
-            <Stack
-              component="form"
-              sx={{
-                m: "auto",
-                width: "50ch",
-              }}
-              //   justifyContent="center"
-              //   alignItems="center"
-              spacing={2}
-              noValidate
-              autoComplete="off"
-            >
+        <br />
+        <Grid item>
+          <Grid
+            container
+            direction={"column"}
+            justifyContent="center"
+            //flexGrow={1}
+            spacing={2}
+            //minWidth={"50vh"}
+          >
+            <Grid item>
               <TextField
                 label="Word in Chinese"
                 id="name"
                 name="name"
                 value={wordName}
                 onChange={handleChange}
-                //defaultValue="Small"
-                //variant="filled"
-                //size="small"
+                fullWidth
               />
+            </Grid>{" "}
+            <Grid item>
               <TextField
                 label="Part of Speech"
                 id="grammar"
                 name="grammar"
                 value={grammar}
                 onChange={handleChange}
-                //defaultValue="Normal"
-                //variant="filled"
-              />
+                fullWidth
+              />{" "}
+            </Grid>
+            <Grid item>
               <TextField
                 label="Pinyin"
                 id="pinyin"
                 name="pinyin"
                 value={pinyin}
                 onChange={handleChange}
-                //defaultValue="Normal"
-                //variant="filled"
+                fullWidth
               />
+            </Grid>
+            <Grid item>
               <TextField
                 label="Translation"
                 id="definition"
                 name="definition"
                 value={definition}
                 onChange={handleChange}
-                //defaultValue="Normal"
-                //variant="filled"
+                fullWidth
               />
+            </Grid>
+            <Grid item>
               <Tooltip title="Save the current word and add next one!">
-                <Button
-                  variant="contained"
-                  //type="submit"
-                  onClick={(e) => onAdd(e)}
-                >
+                <Button variant="contained" fullWidth onClick={(e) => onAdd(e)}>
                   Save the Word into the List
                 </Button>
               </Tooltip>
-            </Stack>
-          </Grid>
-          <br />
-          <Grid
-            container
-            direction={"row"}
-            sx={{
-              m: "auto",
-              width: "50ch",
-            }}
-            justifyContent="space-between"
-          >
+            </Grid>
+          </Grid>{" "}
+          <br />{" "}
+          <Grid container direction={"row"} justifyContent="space-between">
             <Grid item>
               {/* download the current list */}
               <Tooltip title="Download the current word list">
@@ -212,18 +182,19 @@ export default function CreateList() {
             <br />
             <Alert severity="warning" variant="outlined">
               Please save your new list on Hard Drive if you'd like to use it
-              once again!
+              once again !
             </Alert>
           </Grid>
         </Grid>
-      </div>
-      <div className="fab">
-        {list.length ? (
-          <Fab variant="extended" color="info" size="medium">
-            {list.length} word(s) in the current list
-          </Fab>
-        ) : null}
-      </div>
+
+        <div className="fab">
+          {list.length ? (
+            <Fab variant="extended" color="info" size="medium">
+              {list.length} word(s) in the current list
+            </Fab>
+          ) : null}
+        </div>
+      </Grid>
     </React.Fragment>
   );
 }

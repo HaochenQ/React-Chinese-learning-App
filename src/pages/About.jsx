@@ -20,13 +20,15 @@ export default function About() {
     },
   ];
   return (
-    <div className="about-card">
+    <React.Fragment>
       <Grid
         container
-        direction={"column"}
-        display="flex"
-        //justifyContent={"center"}
+        spacing={0}
+        direction="column"
         alignItems="center"
+        justifyContent="center"
+        //sx={{ mx: "1vw" }}
+        style={{ minHeight: "80vh" }}
       >
         <Grid item>
           <Typography variant="h3" gutterBottom>
@@ -50,6 +52,6 @@ export default function About() {
           </Typography>
         </Grid>
       </Grid>
-    </div>
+    </React.Fragment>
   );
 }

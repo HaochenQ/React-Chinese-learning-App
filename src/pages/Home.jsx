@@ -1,15 +1,17 @@
 import * as React from "react";
 import Card from "../components/Card";
 import data from "../data/input.json";
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import ContrlledSwitch from "../components/ControlledSwitch";
 import wordsShuffle from "../util/shuffle";
 import { ComposedListContext } from "../util/ComposedListContext";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function Home() {
   let word;
   let len;
+  const matches = useMediaQuery("(min-width:767px)");
   //current index in original word list
   const [current, setCurrent] = React.useState(0);
   const [files, setFiles] = React.useState("");
@@ -140,56 +142,78 @@ export default function Home() {
   //   };
 
   return (
-    <div className="body">
-      <div className="word-card">
-        <div className="input-bar">
-          <Button variant="contained" component="label">
-            {fileName ? (
-              fileName
-            ) : (
-              <>
-                <FileUploadIcon />
-                &nbsp;Upload File
-              </>
-            )}
-            <input type="file" hidden onChange={handleChange} />
-          </Button>
-          <ContrlledSwitch
-            handleChange={handleSwitchChange}
-            checked={checked}
-            label="Shuffle"
+    <React.Fragment>
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        style={{ minHeight: "80vh", maxWidth: "98vw" }}
+      >
+        <Grid item style={{ minWidth: "50vw", maxWidth: "500px" }}>
+          <br />
+          {/* <Grid item style={{ minWidth: "50vw" }}> */}
+          <Grid container justifyContent={"space-between"}>
+            <Grid item>
+              <Button variant="contained" component="label">
+                {fileName ? (
+                  fileName
+                ) : (
+                  <>
+                    <FileUploadIcon />
+                    &nbsp;Upload File
+                  </>
+                )}
+                <input type="file" hidden onChange={handleChange} />
+              </Button>
+            </Grid>
+
+            <Grid item>
+              <ContrlledSwitch
+                handleChange={handleSwitchChange}
+                checked={checked}
+                label="Shuffle"
+              />
+            </Grid>
+            <Grid item>
+              <ContrlledSwitch
+                handleChange={handleModeChange}
+                checked={modeChecked}
+                label="EN to CN"
+              />
+            </Grid>
+          </Grid>
+          {/* </Grid> */}
+          <br />
+          <Card
+            ENmode={ENmode}
+            len={len}
+            id={word.id}
+            word={word.word}
+            grammar={word.grammar}
+            pinyin={word.pinyin}
+            definition={word.definition}
+            placeholder="Click to reveal the translation"
+            placeholderPinyin="Click to reveal the pinyin"
+            placeholderChinese="点击查看"
           />
-          <ContrlledSwitch
-            handleChange={handleModeChange}
-            checked={modeChecked}
-            label="EN to CN"
-          />
-        </div>
-        {/* <br /> */}
-        {/* <UploadButtons />
-    <br /> */}
-        <br />
-        <Card
-          ENmode={ENmode}
-          len={len}
-          id={word.id}
-          word={word.word}
-          grammar={word.grammar}
-          pinyin={word.pinyin}
-          definition={word.definition}
-          placeholder="Click to reveal the translation"
-          placeholderPinyin="Click to reveal the pinyin"
-          placeholderChinese="点击查看"
-        />
-        <div className="buttons">
-          <Button variant="contained" color="success" onClick={previous}>
-            Previous
-          </Button>
-          <Button variant="contained" color="success" onClick={next}>
-            Next
-          </Button>
-        </div>
-      </div>
-    </div>
+          <br />
+          <Grid item style={{ minWidth: "50vw" }}>
+            <Grid container justifyContent={"space-between"} spacing={0}>
+              <Grid item>
+                <Button variant="contained" color="success" onClick={previous}>
+                  Previous
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button variant="contained" color="success" onClick={next}>
+                  Next
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </React.Fragment>
   );
 }
