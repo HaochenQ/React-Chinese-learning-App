@@ -147,8 +147,8 @@ export default function Home() {
         container
         direction="column"
         alignItems="center"
-        justifyContent="center"
-        style={{ minHeight: "80vh" }}
+        // justifyContent="center"
+        style={{ minHeight: "80vh", paddingTop: "2%" }}
       >
         <Grid item style={{ minWidth: "50vw", maxWidth: "500px" }}>
           <br />
