@@ -1,37 +1,37 @@
 [
     {
         "id": 1,
-        "word": "示例1",
+        "word": "苹果",
         "grammar": "noun",
-        "pinyin": "shì lì",
-        "definition": "Example1"
+        "pinyin": "píng guǒ",
+        "definition": "Apple"
     },
     {
         "id": 2,
-        "word": "示例2",
+        "word": "猫",
         "grammar": "noun",
-        "pinyin": "shì lì",
-        "definition": "Example2"
+        "pinyin": "māo",
+        "definition": "Cat"
     },
     {
         "id": 3,
-        "word": "示例3",
-        "grammar": "noun",
-        "pinyin": "shì lì",
-        "definition": "Example3"
+        "word": "唱歌",
+        "grammar": "verb",
+        "pinyin": "chàng gē",
+        "definition": "Sing"
     },
     {
         "id": 4,
-        "word": "示例4",
-        "grammar": "verb",
-        "pinyin": "shì lì",
-        "definition": "Example4"
+        "word": "漂亮",
+        "grammar": "Adj",
+        "pinyin": "piào liang",
+        "definition": "Beautiful"
     },
     {
         "id": 5,
-        "word": "示例5",
+        "word": "电脑",
         "grammar": "noun",
-        "pinyin": "shì lì",
-        "definition": "Example5"
+        "pinyin": "diàn nǎo",
+        "definition": "Computer"
     }
 ]
