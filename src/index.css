@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.pageContent{
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+@media screen and (max-width: 767px) {
+
+  
+  
+}

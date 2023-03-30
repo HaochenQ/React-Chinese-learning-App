@@ -14,11 +14,13 @@ function App() {
       <ComposedListProvider>
         <CssBaseline />
         <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="compose" element={<CreateList />} />
-          <Route path="about" element={<About />} />
-        </Routes>
+        <div className="pageContent">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="compose" element={<CreateList />} />
+            <Route path="about" element={<About />} />
+          </Routes>
+        </div>
       </ComposedListProvider>
     </React.Fragment>
   );
