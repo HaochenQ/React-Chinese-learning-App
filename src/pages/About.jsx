@@ -6,17 +6,24 @@ export default function About() {
   const JString = [
     {
       id: 1,
-      word: "示例1",
+      word: "苹果",
       grammar: "noun",
-      pinyin: "shì lì",
-      definition: "Example1",
+      pinyin: "píng guǒ",
+      definition: "Apple",
     },
     {
       id: 2,
-      word: "示例2",
+      word: "猫",
       grammar: "noun",
-      pinyin: "shì lì",
-      definition: "Example2",
+      pinyin: "māo",
+      definition: "Cat",
+    },
+    {
+      id: 3,
+      word: "唱歌",
+      grammar: "verb",
+      pinyin: "chàng gē",
+      definition: "Sing",
     },
   ];
   return (
@@ -30,24 +37,24 @@ export default function About() {
         //sx={{ mx: "1vw" }}
         style={{ minHeight: "80vh" }}
       >
-        <Grid item>
+        <Grid item style={{ paddingTop: "3%" }}>
           <Typography variant="h3" gutterBottom>
             About
           </Typography>
         </Grid>
-        <Grid item>
+        <Grid item style={{ paddingBottom: "3%" }}>
           <Typography variant="h6">
-            This is a Chinese learning site where you can upload your own words
-            list or create <Link to="/compose">here</Link>.
+            This is a Chinese learning site where you can upload your own word
+            list or create one <Link to="/compose">here</Link>.
           </Typography>
           <Typography variant="h6">
-            The sample JSON file looks like: <span> </span>
+            A sample JSON file looks like this: <span> </span>
           </Typography>
           <Typography component={"span"}>
             <pre>{JSON.stringify(JString, null, 2)}</pre>
           </Typography>
           <Typography variant="h6">
-            You can click or press "P" to show Pinyin, click or press "D" to
+            You can click or press "P" to show Pinyin, and click or press "D" to
             show the definition.
           </Typography>
         </Grid>
