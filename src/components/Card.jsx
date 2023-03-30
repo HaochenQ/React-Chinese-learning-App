@@ -72,7 +72,7 @@ export default function BasicCard({
               </Typography>
               <Tooltip title="Press [C] to reveal Chinese">
                 <Typography
-                  variant="h1"
+                  sx={{ typography: { md: "h2", sm: "h3", xs: "h3" } }}
                   onClick={() => {
                     setCNdisplay(word);
                   }}
@@ -88,8 +88,8 @@ export default function BasicCard({
               </Typography>
               <Tooltip title="Press [P] to reveal pinyin">
                 <Typography
-                  sx={{ mb: 1.5 }}
-                  variant="h4"
+                  // sx={{ mb: 1.5 }}
+                  sx={{ typography: { md: "h4", sm: "h4", xs: "h5" } }}
                   color="text.secondary"
                   onClick={() => {
                     setPinyindisplay(pinyin);
@@ -98,7 +98,10 @@ export default function BasicCard({
                   {pinyindisplay}
                 </Typography>
               </Tooltip>
-              <Typography variant="h3" component="div">
+              <Typography
+                sx={{ typography: { sm: "h4", xs: "h5" } }}
+                component="div"
+              >
                 {definition}
               </Typography>
             </>
@@ -111,7 +114,10 @@ export default function BasicCard({
               >
                 No. {id}/{len}
               </Typography>
-              <Typography variant="h1" component="div">
+              <Typography
+                sx={{ typography: { md: "h2", sm: "h3", xs: "h3" } }}
+                component="div"
+              >
                 {word}
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary" variant="h6">
@@ -119,8 +125,8 @@ export default function BasicCard({
               </Typography>
               <Tooltip title="Press [P] to reveal pinyin">
                 <Typography
-                  sx={{ mb: 1.5 }}
-                  variant="h4"
+                  //  sx={{ mb: 1.5 }}
+                  sx={{ typography: { sm: "h4", xs: "h5" } }}
                   color="text.secondary"
                   onClick={() => {
                     setPinyindisplay(pinyin);
@@ -131,7 +137,7 @@ export default function BasicCard({
               </Tooltip>
               <Tooltip title="Press [T] to reveal translation">
                 <Typography
-                  variant="h3"
+                  sx={{ typography: { sm: "h4", xs: "h5" } }}
                   onClick={() => {
                     setMeaning(definition);
                   }}
