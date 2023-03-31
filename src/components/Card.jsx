@@ -94,6 +94,7 @@ export default function BasicCard({
                   onClick={() => {
                     setPinyindisplay(pinyin);
                   }}
+                  gutterBottom
                 >
                   {pinyindisplay}
                 </Typography>
@@ -131,6 +132,7 @@ export default function BasicCard({
                   onClick={() => {
                     setPinyindisplay(pinyin);
                   }}
+                  gutterBottom
                 >
                   {pinyindisplay}
                 </Typography>
